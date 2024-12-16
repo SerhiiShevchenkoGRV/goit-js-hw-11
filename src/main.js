@@ -21,16 +21,34 @@ const toastOptions = {
   theme: 'dark',
 };
 
-loader.hidden = true;
+const toggleLoader = isVisible => {
+  loader.hidden = !isVisible;
+};
+
+const clearGallery = () => {
+  gallery.innerHTML = '';
+};
+
+toggleLoader(false);
 
 const searchFunction = event => {
   event.preventDefault();
-  loader.hidden = false;
+  toggleLoader(true);
 
   const inputValue = input.value.trim();
+  if (!inputValue) {
+    iziToast.show({
+      ...toastOptions,
+      message: 'Please enter a search term!',
+    });
+    clearGallery();
+    return;
+  }
+
   fetchImages(inputValue)
     .then(respObj => {
       if (respObj.hits.length === 0) {
+        clearGallery();
         iziToast.show({
           ...toastOptions,
           message:
@@ -41,6 +59,7 @@ const searchFunction = event => {
       }
     })
     .catch(error => {
+      clearGallery();
       iziToast.show({
         ...toastOptions,
         message: error,
