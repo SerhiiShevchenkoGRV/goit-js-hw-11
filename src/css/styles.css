@@ -143,3 +143,25 @@ body {
   letter-spacing: 0.04em;
   color: #2e2f42;
 }
+
+.sl-wrapper .sl-navigation button.sl-next {
+  color: #ffffff;
+}
+.sl-wrapper .sl-navigation button.sl-prev {
+  color: #ffffff;
+}
+.sl-wrapper button.sl-close {
+  color: #ffffff;
+}
+
+.hidden-scroll .sl-wrapper {
+  background: rgba(46, 47, 66, 0.8);
+}
+
+.hidden-scroll .sl-wrapper .sl-counter {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}

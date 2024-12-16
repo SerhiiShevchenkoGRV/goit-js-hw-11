@@ -1,6 +1,8 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+import { gallery } from '../main';
+
 let lightbox;
 
 export const renderGallery = images => {
@@ -41,6 +43,7 @@ export const renderGallery = images => {
 </li>`
     )
     .join('');
+  gallery.innerHTML = markup;
 
   if (!lightbox) {
     lightbox = new SimpleLightbox('.gallery a', {

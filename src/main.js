@@ -8,7 +8,7 @@ import { renderGallery } from './js/render-functions';
 const form = document.querySelector('.form');
 const input = form.querySelector('.search-input');
 const searchBtn = form.querySelector('.search-btn');
-const gallery = document.querySelector('.gallery');
+export const gallery = document.querySelector('.gallery');
 
 const toastOptions = {
   title: 'Error',
@@ -34,7 +34,7 @@ const searchFunction = event => {
         });
       } else {
         console.log(respObj);
-        gallery.innerHTML = renderGallery(respObj.hits);
+        renderGallery(respObj.hits);
       }
     })
     .catch(error => {
