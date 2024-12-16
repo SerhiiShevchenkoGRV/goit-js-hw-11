@@ -5,7 +5,6 @@ export const fetchImages = query => {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
-    per_page: 105,
   };
 
   const queryString = new URLSearchParams(optionsObj).toString();

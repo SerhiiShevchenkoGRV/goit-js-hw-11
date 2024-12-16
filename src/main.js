@@ -5,10 +5,10 @@ import iconError from '../src/img/error-white.svg';
 import { fetchImages } from './js/pixabay-api';
 import { renderGallery } from './js/render-functions';
 
+export const gallery = document.querySelector('.gallery');
+const loader = gallery.querySelector('.loader');
 const form = document.querySelector('.form');
 const input = form.querySelector('.search-input');
-const searchBtn = form.querySelector('.search-btn');
-export const gallery = document.querySelector('.gallery');
 
 const toastOptions = {
   title: 'Error',
@@ -21,8 +21,12 @@ const toastOptions = {
   theme: 'dark',
 };
 
+loader.hidden = true;
+
 const searchFunction = event => {
   event.preventDefault();
+  loader.hidden = false;
+
   const inputValue = input.value.trim();
   fetchImages(inputValue)
     .then(respObj => {
@@ -33,7 +37,6 @@ const searchFunction = event => {
             'Sorry, there are no images matching your search query. Please try again!',
         });
       } else {
-        console.log(respObj);
         renderGallery(respObj.hits);
       }
     })
